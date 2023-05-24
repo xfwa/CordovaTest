@@ -21,6 +21,7 @@
 // See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
 document.addEventListener('deviceready', onDeviceReady, false);
 document.getElementById('testClick').addEventListener('click',testClick)
+document.getElementById('testClick2').addEventListener('click',testClick2)
 
 function onDeviceReady() {
     // Cordova is now initialized. Have fun!
@@ -42,4 +43,19 @@ function testClick(){
 	var message = '测试测试!';
 	
 	cordova.exec(successCallback, errorCallback, 'MyToast', 'coolMethod', [message]);
+}
+
+function testClick2(){
+	alert('执行了前端的点击事件2')
+	var successCallback = function(result) {
+	  console.log('Toast displayed successfully: ' + result);
+	};
+	
+	var errorCallback = function(error) {
+	  console.error('An error occurred while displaying the toast: ' + error);
+	};
+	
+	var message = '22222!';
+	
+	cordova.exec(successCallback, errorCallback, 'MyToast', 'testMethod', [message]);
 }
